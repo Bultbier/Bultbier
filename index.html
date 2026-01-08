@@ -11,114 +11,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bult Bier</title>
 
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+  <style>
+    :root{
+      --bg1:#2f3e4e;
+      --bg2:#3f5366;
+      --bg3:#4a6278;
 
-    /* Sfeervol maar rustig: water/lucht-achtig verloop */
-    background: linear-gradient(
-      180deg,
-      #2f3e4e 0%,
-      #3f5366 60%,
-      #4a6278 100%
-    );
+      --ink:#0b1620;
+      --muted:rgba(11,22,32,.72);
 
-    color: #0b1620;
-  }
+      --card:#f3f1ec;        /* warm wit, geen spierwit */
+      --card2:rgba(243,241,236,.92);
+      --stroke:rgba(11,22,32,.14);
 
-  .container {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem;
-
-    /* Licht maar warm, geen spierwit */
-    background-color: #f7f8f6;
-    border-radius: 14px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.25);
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    margin-top: 2rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  a {
-    color: #b6282a;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  video {
-    width: 100%;
-    max-width: 720px;
-    aspect-ratio: 16 / 9;
-    display: block;
-    margin: 2rem auto;
-    border-radius: 12px;
-    background: #000;
-  }
-
-  @media (max-width: 768px) {
-    .container {
-      margin: 1.5rem 1rem;
-      padding: 1.25rem;
+      --accent:#b6282a;
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --radius:16px;
     }
 
-    h1 {
-      font-size: 2rem;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      padding:0;
+      font-family:'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 60%, var(--bg3) 100%);
+      color: var(--ink);
     }
 
-    p {
-      font-size: 1rem;
+    /* subtiel “vignet” voor wat diepte, maar niet druk */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      background: radial-gradient(circle at 50% 10%, rgba(255,255,255,.08), rgba(0,0,0,.18));
+      z-index:-1;
     }
-  }
-</style>
+
+    .container{
+      max-width: 860px;
+      margin: 3rem auto;
+      padding: 2.2rem;
+
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(182,40,42,.12);
+      flex: 0 0 auto;
+    }
+
+    h1{
+      font-size: 2.6rem;
+      margin: 0 0 0.8rem;
+      letter-spacing: .2px;
+    }
+
+    .intro{
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: rgba(11,22,32,.80);
+      margin: 0 0 1.6rem;
+      padding-left: 14px;
+      border-left: 4px solid rgba(182,40,42,.35);
+    }
+
+    h2{
+      margin: 2rem 0 0.8rem;
+      font-size: 1.4rem;
+      letter-spacing: .2px;
+    }
+
+    p{
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin: 0 0 1.25rem;
+      color: rgba(11,22,32,.86);
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(11,22,32,.14);
+      margin: 1.6rem 0;
+    }
+
+    a{
+      color: var(--accent);
+      font-weight: 650;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+
+    /* Video’s rustiger en professioneler */
+    .media{
+      margin: 1rem 0 1.8rem;
+      display: grid;
+      gap: 14px;
+    }
+
+    .frame{
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(11,22,32,.14);
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      background: rgba(0,0,0,.10);
+    }
+
+    video{
+      width:100%;
+      display:block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .note{
+      color: rgba(11,22,32,.68);
+      font-size: 0.95rem;
+      margin-top: -0.6rem;
+    }
+
+    @media (max-width: 768px){
+      .container{
+        margin: 1.4rem 0.9rem;
+        padding: 1.3rem;
+      }
+      h1{ font-size: 2.05rem; }
+      p{ font-size: 1rem; }
+      .intro{ font-size: 1.05rem; }
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
+    <div class="kicker"><span class="dot"></span> Twee Urker maos en een handvol hop</div>
+
     <h1>Bult Bier</h1>
 
-    <p>We begonnen met een weegschaal. Nu brouwen we uit de losse pols – en het smaakt beter dan ooit.</p>
-    <p>Bult Bier is geen merk. Het is een goed excuus voor twee maos om samen te brouwen, te lachen en te proosten.</p>
+    <p class="intro">
+      We begonnen met een weegschaal. Nu brouwen we uit de losse pols – en het smaakt beter dan ooit.
+      <br />
+      Bult Bier is geen merk. Het is een goed excuus voor twee maos om samen te brouwen, te lachen en te proosten.
+    </p>
+
     <p>Twee gasten. Eén garage. Een handvol mout, wat hop en veel zin. Zo begon het. Eerst met schema’s en tabellen. Alles tot op de gram nauwkeurig. Maar als je samen brouwt, wil je lol – geen stress.</p>
     <p>Tegenwoordig doen we het anders. Geen weegschalen, geen stress, geen exact 68,3 graden. Gewoon: ingrediënten op gevoel, temperatuur op standje “dat klinkt goed”. En eerlijk is eerlijk – dat bevalt ons prima.</p>
 
-    <h2>Zo ziet dat eruit:</h2>
+    <div class="divider"></div>
 
-    <video autoplay muted loop playsinline>
-      <source src="IMG_0324.MOV" type="video/mp4" />
-    </video>
+    <h2>Zo ziet dat eruit</h2>
 
-    <video autoplay muted loop playsinline>
-      <source src="IMG_4964.mov" type="video/mp4" />
-    </video>
+    <div class="media">
+      <div class="frame">
+        <video autoplay muted loop playsinline>
+          <source src="IMG_0324.MOV" type="video/mp4" />
+        </video>
+      </div>
 
-    <video autoplay muted loop playsinline>
-      <source src="IMG_5802.MOV" type="video/mp4" />
-    </video>
+      <div class="frame">
+        <video autoplay muted loop playsinline>
+          <source src="IMG_4964.mov" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="frame">
+        <video autoplay muted loop playsinline>
+          <source src="IMG_5802.MOV" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <p class="note">Tip: als een video soms niet laadt op mobiel, zet ’m later om naar mp4 (H.264). Dan loopt het overal soepel.</p>
+
+    <div class="divider"></div>
 
     <p>We plakken geen namen op onze brouwsels. We doen niet aan hippe etiketten of IPA-moeilijk-doen. Wat erin zit, komt uit Urker handen, en dat proef je. Soms bitter, soms wat fruitiger, altijd stevig van smaak. Net als wij.</p>
-    <p>Waarom Bult? De naam heeft een dubbele betekenis. Het oude eiland Urk wordt hier al generaties lang de Bult genoemd. En als je hier zegt: geef mij maar een bult bier, dan bedoel je gewoon veel bier. Die combinatie vonden we te mooi om te laten liggen. Zo is Bult Bier ontstaan.)</p>
+    <p>Waarom Bult? De naam heeft een dubbele betekenis. Het oude eiland Urk wordt hier al generaties lang de Bult genoemd. En als je hier zegt: geef mij maar een bult bier, dan bedoel je gewoon veel bier. Die combinatie vonden we te mooi om te laten liggen. Zo is Bult Bier ontstaan.</p>
 
-    <h2>Sfeermoment Bult Bier</h2>
-
+    <h2>Sfeermoment</h2>
     <p>We verkopen (nog) niks. Maar wie weet komt dat ooit. Tot die tijd: scan die code. Lees dit verhaal. Lach even. En als je ergens aan het water staat met een flesje in je hand, weet dan: er zijn twee Urker maos die op precies hetzelfde moment precies hetzelfde doen.</p>
 
     <p>Stuur ons gerust een berichtje: <a href="mailto:Bultbier@gmail.com">Bultbier@gmail.com</a></p>
