@@ -34,34 +34,39 @@
   body{
   margin:0;
   padding:0;
-  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  font-family:"Segoe UI", system-ui, -apple-system, Arial, sans-serif;
 
-  /* Water-achtig verloop */
-  background:
-    linear-gradient(
-      180deg,
-      #243645 0%,
-      #2f475a 45%,
-      #334f63 100%
-    );
+  /* Fallback kleur als afbeelding even niet laadt */
+  background: #1f2f3e;
 
   color: #0b1620;
 }
 
-/* Lichtval + diepte, alsof je op water kijkt */
+/* Waterfoto als achtergrondlaag */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
-  pointer-events:none;
-  background:
-    radial-gradient(
-      circle at 50% 10%,
-      rgba(255,255,255,.12),
-      rgba(0,0,0,.25)
-    );
-  z-index:-1;
+  z-index: -2;
+
+  background: url("zee.png") center center / cover no-repeat fixed;
+
+  /* Maak het wat rustiger en donkerder */
+  filter: saturate(0.9) contrast(1.05) brightness(0.75);
 }
+
+/* Extra overlay zodat je kaart mooi loskomt en tekst leesbaar blijft */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255,255,255,.10), rgba(0,0,0,.35));
+}
+
 
 
     .container{
