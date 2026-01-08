@@ -17,8 +17,13 @@
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
 
-    /* Rustige, lichte achtergrond die overal werkt */
-    background: #e6ebef;
+    /* Sfeervol maar rustig: water/lucht-achtig verloop */
+    background: linear-gradient(
+      180deg,
+      #2f3e4e 0%,
+      #3f5366 60%,
+      #4a6278 100%
+    );
 
     color: #0b1620;
   }
@@ -28,9 +33,10 @@
     margin: 3rem auto;
     padding: 2rem;
 
-    background-color: #ffffff;
+    /* Licht maar warm, geen spierwit */
+    background-color: #f7f8f6;
     border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.25);
   }
 
   h1 {
