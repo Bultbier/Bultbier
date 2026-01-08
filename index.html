@@ -11,92 +11,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bult Bier</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
 
-      /* Licht laagje over de achtergrond zodat het geheel niet te donker is */
-      background:
-        linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.66)),
-        url('An_oil_painting_on_canvas_depicts_a_lighthouse_sta.png') no-repeat center center fixed;
-      background-size: cover;
+    /* Rustige, lichte achtergrond die overal werkt */
+    background: #e6ebef;
 
-      /* Donkere tekst op lichte kaart */
-      color: #0b1620;
-      text-shadow: none;
-    }
+    color: #0b1620;
+  }
 
-    @media (max-width: 768px) {
-      body {
-        background:
-          linear-gradient(rgba(255,255,255,0.90), rgba(255,255,255,0.74)),
-          url('achtergrond_mobiel_vriendelijk.png') no-repeat center center fixed;
-        background-size: cover;
-      }
-    }
+  .container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
 
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-top: 2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: #b6282a;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  video {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16 / 9;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 12px;
+    background: #000;
+  }
+
+  @media (max-width: 768px) {
     .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-
-      /* Licht “glas”-vlak voor leesbaarheid */
-      background-color: rgba(255, 255, 255, 0.82);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      border: 1px solid rgba(0,0,0,0.10);
-      backdrop-filter: blur(6px);
+      margin: 1.5rem 1rem;
+      padding: 1.25rem;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      margin-top: 2rem;
+      font-size: 2rem;
     }
 
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      font-size: 1rem;
     }
-
-    a {
-      color: #b6282a;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    video {
-      width: 100%;
-      max-width: 720px;
-      aspect-ratio: 16 / 9;
-      display: block;
-      margin: 2rem auto;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.06);
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
